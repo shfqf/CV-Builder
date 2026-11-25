@@ -1,0 +1,6 @@
+com\mycompany\dynamiccvproject\JakartaRestConfiguration.class
+com\mycompany\dynamiccvproject\resources\JakartaEE10Resource.class
+com\cvbuilder\model\Education.class
+com\cvbuilder\model\CVBean.class
+com\cvbuilder\controller\CVServlet.class
+com\cvbuilder\model\Experience.class

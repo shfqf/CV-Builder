@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.cvbuilder.model.CVBean" %>
 <%@ page import="com.cvbuilder.model.Experience" %>
-<%@ page import="com.cvbuilder.model.Experience" %>
 <%@ page import="com.cvbuilder.model.Education" %>
 <%@ page import="java.util.List" %>
 
@@ -11,14 +10,15 @@
     <meta charset="UTF-8">
     <title>CV Preview - <%= ((CVBean)request.getAttribute("cvData")).getFullName() %></title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
-<style>
+    <style>
         * { 
             box-sizing: border-box; 
             margin: 0; 
             padding: 0; 
         }
         
-        body { 
+        body 
+        { 
             font-family: 'Inter', sans-serif; 
             /* Latar belakang halaman biru lembut */
             background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
@@ -33,7 +33,8 @@
         }
         
         /* Bekas Utama Kertas A4 CV */
-        .preview-cv {
+        .preview-cv 
+        {
             width: 100%;
             max-width: 850px;
             background: #ffffff;
@@ -44,24 +45,28 @@
             border: 1px solid #93c5fd;
         }
 
-        .cv-container-layout {
+        .cv-container-layout 
+        {
             display: grid;
             grid-template-columns: 270px 1fr; 
             min-height: 1050px;
         }
 
         /* Sidebar Sebelah Kiri - Tema Royal Blue & Navy */
-        .cv-sidebar {
+        .cv-sidebar 
+        {
             background: linear-gradient(180deg, #1e3a8a 0%, #1d4ed8 100%);
             color: #ffffff;
             padding: 45px 28px;
         }
 
-        .sidebar-section {
+        .sidebar-section 
+        {
             margin-bottom: 32px;
         }
 
-        .sidebar-section h3 {
+        .sidebar-section h3 
+        {
             font-size: 11.5px;
             text-transform: uppercase;
             letter-spacing: 1.8px;
@@ -72,7 +77,8 @@
             font-weight: 700;
         }
 
-        .contact-item {
+        .contact-item 
+        {
             font-size: 13px;
             color: #eff6ff;
             margin-bottom: 12px;
@@ -83,7 +89,8 @@
             line-height: 1.5;
         }
 
-        .sidebar-section strong {
+        .sidebar-section strong 
+        {
             color: #ffffff !important;
             font-size: 12.5px !important;
             letter-spacing: 0.3px;
@@ -91,7 +98,8 @@
             margin-bottom: 6px;
         }
 
-        .sidebar-section p {
+        .sidebar-section p 
+        {
             color: #eff6ff !important;
             font-size: 12.5px !important;
             line-height: 1.6;
@@ -101,21 +109,23 @@
             border-left: 3px solid #60a5fa;
         }
 
-        /* Kandungan Utama Sebelah Kanan */
-        .cv-main-container {
+        .cv-main-container 
+        {
             background-color: #ffffff;
             color: #1e293b;
             padding: 45px 40px;
         }
 
-        .cv-main-header {
+        .cv-main-header 
+        {
             margin-bottom: 30px;
             border-bottom: 2px solid #dbeafe;
             padding-bottom: 20px;
             position: relative;
         }
 
-        .cv-main-header::after {
+        .cv-main-header::after 
+        {
             content: '';
             position: absolute;
             bottom: -2px;
@@ -126,7 +136,8 @@
             border-radius: 2px;
         }
 
-        .cv-main-header h1 {
+        .cv-main-header h1 
+        {
             font-size: 30px;
             font-weight: 800;
             color: #1e3a8a;
@@ -136,18 +147,21 @@
             text-transform: uppercase;
         }
 
-        .cv-main-header h3 {
+        .cv-main-header h3 
+        {
             font-size: 15px;
             font-weight: 600;
             color: #2563eb;
             letter-spacing: 0.4px;
         }
 
-        .cv-section {
+        .cv-section 
+        {
             margin-bottom: 28px;
         }
 
-        .cv-section h3 {
+        .cv-section h3 
+        {
             font-size: 12.5px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -160,7 +174,8 @@
             align-items: center;
         }
 
-        .cv-section h3::before {
+        .cv-section h3::before 
+        {
             content: '';
             display: inline-block;
             width: 8px;
@@ -170,14 +185,16 @@
             margin-right: 8px;
         }
 
-        .cv-section p {
+        .cv-section p 
+        {
             font-size: 13.5px;
             color: #334155;
             line-height: 1.65;
             text-align: justify;
         }
 
-        .item-header {
+        .item-header 
+        {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -185,13 +202,15 @@
             gap: 10px;
         }
 
-        .item-title {
+        .item-title 
+        {
             font-weight: 700;
             font-size: 15px;
             color: #172554;
         }
 
-        .item-date {
+        .item-date 
+        {
             font-size: 11.5px;
             font-weight: 600;
             color: #1d4ed8;
@@ -201,7 +220,8 @@
             white-space: nowrap;
         }
 
-        .item-subtitle, .item-subtaitle {
+        .item-subtitle, .item-subtaitle 
+        {
             font-size: 13.5px;
             color: #2563eb;
             font-weight: 600;
@@ -209,7 +229,8 @@
         }
 
         /* Action Bar */
-        .action-bar {
+        .action-bar 
+        {
             grid-column: 2;
             padding: 10px 40px 35px 40px;
             background: #ffffff;
@@ -220,7 +241,8 @@
             gap: 12px;
         }
 
-        .btn-back, .btn-print {
+        .btn-back, .btn-print 
+        {
             padding: 11px 22px;
             border: none;
             border-radius: 8px;
@@ -234,53 +256,64 @@
             transition: all 0.2s ease;
         }
 
-        .btn-print { 
+        .btn-print 
+        { 
             background-color: #1d4ed8; 
             color: #ffffff; 
             box-shadow: 0 4px 12px rgba(29, 78, 216, 0.28);
         }
-        .btn-print:hover { 
+        .btn-print:hover 
+        { 
             background-color: #1e40af; 
             transform: translateY(-1px);
             box-shadow: 0 6px 16px rgba(30, 64, 175, 0.38);
         }
 
-        .btn-back { 
+        .btn-back 
+        { 
             background-color: #ffffff; 
             color: #1e40af; 
             border: 1px solid #93c5fd;
         }
-        .btn-back:hover { 
+        .btn-back:hover 
+        { 
             background-color: #dbeafe; 
             color: #172554;
         }
 
-        @media print {
-            body { 
+        @media print 
+        {
+            body 
+            { 
                 background: #ffffff; 
                 padding: 0; 
             }
-            .preview-cv { 
+            .preview-cv 
+            { 
                 box-shadow: none; 
                 border: none;
                 border-radius: 0;
                 max-width: 100%; 
                 margin: 0; 
             }
-            .cv-container-layout {
+            .cv-container-layout 
+            {
                 min-height: 100vh;
             }
-            .cv-sidebar { 
+            .cv-sidebar 
+            { 
                 background: linear-gradient(180deg, #1e3a8a 0%, #1d4ed8 100%) !important; 
                 -webkit-print-color-adjust: exact; 
                 print-color-adjust: exact; 
             }
-            .item-date {
+            .item-date 
+            {
                 background-color: #dbeafe !important;
                 -webkit-print-color-adjust: exact; 
                 print-color-adjust: exact; 
             }
-            .no-print { 
+            .no-print 
+            { 
                 display: none !important; 
             }
         }
@@ -289,10 +322,10 @@
 <body>
 
 <%
-    CVBean cv = (CVBean) request.getAttribute("cvData"); //GET DATA USING REQUEST
+    CVBean cv = (CVBean) request.getAttribute("cvData"); 
     if(cv == null)
     {
-        response.sendRedirect("cvForm.jsp");//IF NULL, REDIRECT TO CVFORM TO INPUT DATA
+        response.sendRedirect("cvForm.jsp");
         return;
     }
 %>
@@ -343,6 +376,16 @@
                 <h1> <%= cv.getFullName() %> </h1>
                 <h3> <%= cv.getProfessionalTitle() %> </h3>
             </div>
+
+            <% if (cv.getProfileSummary() != null && !cv.getProfileSummary().trim().isEmpty()) { %>
+            <div class="cv-section">
+                <h3>Profile Summary</h3>
+                <p>
+                    <%= cv.getProfileSummary() %>
+                </p>
+            </div>
+            <% } %>
+
             <div class="cv-section">
                 <h3>Experience</h3>
                 <%
@@ -389,44 +432,45 @@
                         %>
             </div>
             
-<div class="cv-section">
-    <h3>Educational Details</h3>
-    <%
-        List<Education> educationList = cv.getEducation();
-        if (educationList != null && !educationList.isEmpty()) {
-            for (Education edu : educationList) {
-    %>
-        <div class="experience-entry">
-            <div class="item-header">
-                <span class="item-title">
-                    <%= edu.getHighestDegree() != null ? edu.getHighestDegree() : "" %>
-                </span>
-                <% if (edu.getYearOfGraduation() != null && !edu.getYearOfGraduation().trim().isEmpty()) { %>
-                    <span class="item-date">
-                        <%= edu.getYearOfGraduation() %>
-                    </span>
-                <% } %>
-            </div>
+            <div class="cv-section">
+                <h3>Educational Details</h3>
+                <%
+                    List<Education> educationList = cv.getEducation();
+                    if (educationList != null && !educationList.isEmpty()) {
+                        for (Education edu : educationList) {
+                %>
+                    <div class="experience-entry">
+                        <div class="item-header">
+                            <span class="item-title">
+                                <%= edu.getHighestDegree() != null ? edu.getHighestDegree() : "" %>
+                            </span>
+                            <% if (edu.getYearOfGraduation() != null && !edu.getYearOfGraduation().trim().isEmpty()) { %>
+                                <span class="item-date">
+                                    <%= edu.getYearOfGraduation() %>
+                                </span>
+                            <% } %>
+                        </div>
 
-            <div class="item-subtitle">
-                <%= edu.getInstitutionName() != null ? edu.getInstitutionName() : "" %>
-                <%= edu.getPrograme() != null ? edu.getPrograme() : "" %>
-            </div>
+                        <div class="item-subtitle">
+                            <%= edu.getInstitutionName() != null ? edu.getInstitutionName() : "" %>
+                            <%= edu.getPrograme() != null ? edu.getPrograme() : "" %>
+                        </div>
 
-            <% if (edu.getMajor() != null && !edu.getMajor().trim().isEmpty()) { %>
-                <p>Major: <%= edu.getMajor() %></p>
-            <% } %>
+                        <% if (edu.getMajor() != null && !edu.getMajor().trim().isEmpty()) { %>
+                            <p>Major: <%= edu.getMajor() %></p>
+                        <% } %>
+                    </div>
+                <%
+                        }
+                    } else {
+                %>
+                    <p>No educational details provided.</p>
+                <%
+                    }
+                %>
+            </div>
         </div>
-    <%
-            }
-        } else {
-    %>
-        <p>No educational details provided.</p>
-    <%
-        }
-    %>
-</div>
-        </div>
+
         <div class="action-bar no-print">
             <button type="button" onclick="window.print()" class="btn-print">
                 Print / Save in PDF
